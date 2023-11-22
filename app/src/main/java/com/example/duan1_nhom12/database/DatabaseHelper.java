@@ -62,8 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "(7,'Tai nghe Bluetooth',20000000,'tainghe','Tai nghe mèo Bluetooth P47M dễ thương xanh navi Giá rẻ',2)," +
                 "(8,'PS5',20000000,'game','Máy chơi game Sony Playstation 5 Digital Slim | PS5 Slim Digital',3)," +
                 "(9,'PS5',20000000,'game','Máy chơi game Sony Playstation 5 Digital Slim | PS5 Slim Digital',3)");
-    //    sqLiteDatabase.execSQL("INSERT INTO sanpham VALUES (1,'Iphone 15',25000000,'dien thoai','iPhone 14 Pro 256GB likenew ATV - Vàng',1)");
-       
+
 
         sqLiteDatabase.execSQL("INSERT INTO admin VALUES ('hieund','nguyen duc hieu','abc')");
 
