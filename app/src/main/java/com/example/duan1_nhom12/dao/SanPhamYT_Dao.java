@@ -23,7 +23,7 @@ public class SanPhamYT_Dao {
         if(cursor.getCount()!=0){
             cursor.moveToFirst();
             do{
-                list.add( new SanPhamModel(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3)));
+                list.add( new SanPhamModel(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5)));
 
             }while ((cursor.moveToNext()));
         }
@@ -31,13 +31,14 @@ public class SanPhamYT_Dao {
     }
 
 
-    public boolean themVaoYeuthich(int masp,String ten,int giatien,String loai){
+    public boolean themVaoYeuthich(int masp,String ten,int giatien,String loai,String mota,int manhacc){
         SQLiteDatabase sqLiteDatabase= dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("masp",masp);
         contentValues.put("tensp",ten);
         contentValues.put("giasp",giatien);
         contentValues.put("loaisp",loai);
+        contentValues.put("motasp",mota);
+        contentValues.put("manhacc",manhacc);
         long check = sqLiteDatabase.insert("sanphamyt",null,contentValues);
         if(check==-1)
             return false;
@@ -49,12 +50,6 @@ public class SanPhamYT_Dao {
     public long delete(String id) {
         return db.delete("sanphamyt", "masp = ?", new String[]{String.valueOf(id)});
     }
-
-
-
-
-
-
 
 }
 

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
-        super(context,"QL",null,7);
+        super(context,"QL",null,9);
     }
 
     @Override
@@ -30,22 +30,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String dbKhachHang = "create table khachhang(username text primary key ,hoten text,password text,sdt text,diachi text )";
         sqLiteDatabase.execSQL(dbKhachHang);
 
-
-        String dbHoaDon="create table hoadon( mahd integer PRIMARY KEY autoincrement,maadmin text references admin(username),makhachhang text references khachhang(username) )";
+//mã hóa đơn , username admin , username khách hàng , tên khách hàng , số điện thoại khách hàng , địa chỉ khách hàng ,mã sản phẩm,tên sản phẩm , giá sản phẩm ,
+       String dbHoaDon ="create table hoadon(mahd primary key autoincrement, usrnameadmin text references admin(username),usrnamekh text references khachhang(username),masp integer references sanpham(masp))";
+        //String dbHoaDon="create table hoadon(mahd integer PRIMARY KEY autoincrement,maadmin text references admin(username),makhachhang text references khachhang(username),tongtien integer )";
 
         sqLiteDatabase.execSQL(dbHoaDon);
 
 
-        String dbChiTietHD="create table chitiethd(macthd integer  PRIMARY KEY autoincrement,mahd integer references hoadon(mahd),masp integer references sanpham(masp))";
-        sqLiteDatabase.execSQL(dbChiTietHD);
 
 
 
-        String dbSanPhamGh ="create table sanphamgh(masp integer primary key autoincrement,tensp text, giasp integer,loaisp text)";
+        String dbSanPhamGh ="create table sanphamgh(masp integer primary key ,tensp text, giasp integer,loaisp text, motasp text,manhacc integer references nhacc(manhacc) )";
+
+        //String dbSanPhamGh ="create table sanphamgh(masp integer primary key autoincrement,tensp text, giasp integer,loaisp text)";
         sqLiteDatabase.execSQL(dbSanPhamGh);
 
+        String dbSanPhamYT ="create table sanphamyt(masp integer primary key ,tensp text, giasp integer,loaisp text, motasp text,manhacc integer references nhacc(manhacc) )";
 
-        String dbSanPhamYT ="create table sanphamyt(masp integer primary key ,tensp text, giasp integer,loaisp text)";
+       // String dbSanPhamYT ="create table sanphamyt(masp integer primary key ,tensp text, giasp integer,loaisp text)";
         sqLiteDatabase.execSQL(dbSanPhamYT);
 
 
@@ -62,8 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "(7,'Tai nghe Bluetooth',20000000,'tainghe','Tai nghe mèo Bluetooth P47M dễ thương xanh navi Giá rẻ',2)," +
                 "(8,'PS5',20000000,'game','Máy chơi game Sony Playstation 5 Digital Slim | PS5 Slim Digital',3)," +
                 "(9,'PS5',20000000,'game','Máy chơi game Sony Playstation 5 Digital Slim | PS5 Slim Digital',3)");
-    //    sqLiteDatabase.execSQL("INSERT INTO sanpham VALUES (1,'Iphone 15',25000000,'dien thoai','iPhone 14 Pro 256GB likenew ATV - Vàng',1)");
-       
+
 
         sqLiteDatabase.execSQL("INSERT INTO admin VALUES ('hieund','nguyen duc hieu','abc')");
 

@@ -1,5 +1,6 @@
 package com.example.duan1_nhom12.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -41,7 +42,7 @@ public class SanPhamYT_Adapter extends RecyclerView.Adapter<SanPhamYT_Adapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHodel holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHodel holder,  @SuppressLint("RecyclerView") int position) {
         holder.txtten.setText(list.get(position).getTen());
         holder.txtgia.setText("Giá: " + list.get(position).getGia());
         holder.txtloai.setText("Loại: " + list.get(position).getLoai());
@@ -67,12 +68,12 @@ public class SanPhamYT_Adapter extends RecyclerView.Adapter<SanPhamYT_Adapter.Vi
             @Override
             public boolean onLongClick(View view) {
 
-                String masp =""+list.get(position).getMasp();
+                String masp = ""+list.get(position).getMasp();
                 String ten = list.get(position).getTen();
                 String gia =""+ list.get(position).getGia();
                 String loai = list.get(position).getLoai();
-                String mota =list.get(position).getMotasp();
-                String manhacc=""+list.get(position).getManhacc();
+                String mota = list.get(position).getMotasp();
+                String manhacc =""+list.get(position).getManhacc();
 
 
                 Context context = view.getContext();
@@ -83,6 +84,7 @@ public class SanPhamYT_Adapter extends RecyclerView.Adapter<SanPhamYT_Adapter.Vi
                 intent.putExtra("loai",loai);
                 intent.putExtra("mota", mota);
                 intent.putExtra("manhacc",manhacc);
+
                 context.startActivity(intent);
                 return false;
             }

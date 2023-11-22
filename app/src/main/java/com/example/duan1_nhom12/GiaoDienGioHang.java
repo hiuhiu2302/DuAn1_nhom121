@@ -32,7 +32,7 @@ public class GiaoDienGioHang extends AppCompatActivity {
         dao = new SanPhamGH_dao(this);
         listgiohang = dao.getds();
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(this);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2);
+        GridLayoutManager layoutManager = new GridLayoutManager(this,1);
         rc.setLayoutManager(layoutManager);
         adapter= new SanPhamGH_Adapter(this,listgiohang,dao);
         rc.setAdapter(adapter);

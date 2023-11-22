@@ -22,7 +22,7 @@ public class SanPhamGH_dao {
         if(cursor.getCount()!=0){
             cursor.moveToFirst();
             do{
-                list.add( new SanPhamModel(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3)));
+                list.add( new SanPhamModel(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5)));
 
             }while ((cursor.moveToNext()));
         }
@@ -30,12 +30,15 @@ public class SanPhamGH_dao {
     }
 
 
-    public boolean themVaoGioHang(String ten,int giatien,String loai){
+    public boolean themVaoGioHang(int masp,String ten ,int gia,String loai,String mota,int manhacc){
         SQLiteDatabase sqLiteDatabase= dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put("masp",masp);
         contentValues.put("tensp",ten);
-        contentValues.put("giasp",giatien);
+        contentValues.put("giasp",gia);
         contentValues.put("loaisp",loai);
+        contentValues.put("motasp",mota);
+        contentValues.put("manhacc",manhacc);
         long check = sqLiteDatabase.insert("sanphamgh",null,contentValues);
         if(check==-1)
             return false;
@@ -44,12 +47,14 @@ public class SanPhamGH_dao {
     }
 
 
-    public  boolean capnhap(int masp,String ten ,int gia,String loai){
+    public  boolean capnhap(int masp,String ten ,int gia,String loai,String mota,int manhacc){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("tensp",ten);
         contentValues.put("giasp",gia);
         contentValues.put("loaisp",loai);
+        contentValues.put("motasp",mota);
+        contentValues.put("nhacc",manhacc);
         long check = sqLiteDatabase.update("sanphamgh",contentValues,"masp=?",new String[]{String.valueOf(masp)});
         if(check==-1)
             return  false;
@@ -59,6 +64,10 @@ public class SanPhamGH_dao {
 
     }
 
+    public long delete(int id) {
+        SQLiteDatabase sqLiteDatabase= dbHelper.getWritableDatabase();
+        return sqLiteDatabase.delete("sanphamgh", "masp = ?", new String[]{String.valueOf(id)});
+    }
 
 
 

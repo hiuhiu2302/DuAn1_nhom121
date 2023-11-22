@@ -1,5 +1,6 @@
 package com.example.duan1_nhom12.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,27 +37,26 @@ public class SanPhamGH_Adapter  extends RecyclerView.Adapter<SanPhamGH_Adapter.V
     @Override
     public ViewHodel onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_sanpham, parent, false);
+        View view = inflater.inflate(R.layout.item_sanpham_ngang, parent, false);
 
         return new ViewHodel(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHodel holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHodel holder,  @SuppressLint("RecyclerView") int position) {
         holder.txtten.setText(list.get(position).getTen());
         holder.txtgia.setText("Giá: " + list.get(position).getGia());
-        holder.txtloai.setText("Loại: " + list.get(position).getLoai());
+        String loai = list.get(position).getLoai();
         SanPhamModel sp = list.get(position);
-        if (sp.getLoai().equals("dien thoai")) {
-            Picasso.get().load(R.drawable.img_phone).resize(190,150).into(holder.img);
-        } else if (sp.getLoai().equals("laptop")) {
+        if (loai.equals("dien thoai")) {
+            Picasso.get().load(R.drawable.img_phone).resize(130,110).into(holder.img);
+        } else if (loai.equals("laptop")) {
             Picasso.get().load(R.drawable.img_laptop).resize(190,150).centerCrop().into(holder.img);
         }
-        else if(sp.getLoai().equals("tainghe")){
+        else if(loai.equals("tainghe")){
             Picasso.get().load(R.drawable.img_tainghe).resize(190,150).into(holder.img);
-
         }
-        else if(sp.getLoai().equals("game")){
+        else if(loai.equals("game")){
             Picasso.get().load(R.drawable.img_game).resize(190,150).into(holder.img);
 
         }
@@ -64,22 +65,43 @@ public class SanPhamGH_Adapter  extends RecyclerView.Adapter<SanPhamGH_Adapter.V
             @Override
             public boolean onLongClick(View view) {
 
+
+                String masp = ""+list.get(position).getMasp();
                 String ten = list.get(position).getTen();
                 String gia =""+ list.get(position).getGia();
                 String loai = list.get(position).getLoai();
+                String mota = list.get(position).getMotasp();
+                String manhacc =""+list.get(position).getManhacc();
 
 
                 Context context = view.getContext();
                 Intent intent = new Intent(context, GiaoDienChiTietSP.class);
+                intent.putExtra("masp", masp);
                 intent.putExtra("ten", ten);
                 intent.putExtra("gia", gia);
                 intent.putExtra("loai",loai);
+                intent.putExtra("mota", mota);
+                intent.putExtra("manhacc",manhacc);
+
                 context.startActivity(intent);
+                Toast.makeText(context, "mota"+manhacc, Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
 
 
+        holder.txtxoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int check = list.get(position).getMasp();
+                dao.delete(check);
+                Toast.makeText(context, "xóa thành công", Toast.LENGTH_SHORT).show();
+                list.clear();
+                list=dao.getds();
+                notifyDataSetChanged();
+            }
+        });
 
 
     }
@@ -90,19 +112,21 @@ public class SanPhamGH_Adapter  extends RecyclerView.Adapter<SanPhamGH_Adapter.V
     }
 
     public class ViewHodel extends RecyclerView.ViewHolder {
-        TextView txtten, txtgia, txtloai;
+        TextView txtten, txtgia,txtxoa;
 
         ImageView img;
+
 
         public ViewHodel(@NonNull View itemView) {
             super(itemView);
             txtten = itemView.findViewById(R.id.txtten);
             txtgia = itemView.findViewById(R.id.txtgia);
-            txtloai = itemView.findViewById(R.id.txtloai);
             img = itemView.findViewById(R.id.imgsanpham);
+            txtxoa= itemView.findViewById(R.id.txtxoasp);
 
 
 
         }
     }
+
 }

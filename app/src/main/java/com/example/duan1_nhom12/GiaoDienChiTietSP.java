@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan1_nhom12.adapter.SanPhamGH_Adapter;
+import com.example.duan1_nhom12.adapter.SanPhamYT_Adapter;
 import com.example.duan1_nhom12.dao.SanPhamDAO;
 import com.example.duan1_nhom12.dao.SanPhamGH_dao;
 import com.example.duan1_nhom12.dao.SanPhamYT_Dao;
@@ -22,12 +23,13 @@ import java.util.ArrayList;
 
 public class GiaoDienChiTietSP extends AppCompatActivity {
 ArrayList<SanPhamModel> list;
-    SanPhamGH_dao dao1 = new SanPhamGH_dao(this);
-    SanPhamYT_Dao daoYT = new SanPhamYT_Dao(this);
+    SanPhamGH_dao daoGH;
+    SanPhamYT_Dao daoYT ;
 
 
 SanPhamDAO dao;
 SanPhamGH_Adapter adapter;
+SanPhamYT_Adapter adapter1;
 ArrayList<SanPhamModel> listgiohang;
 ArrayList<SanPhamModel> listyeuthich;
 
@@ -35,10 +37,15 @@ ArrayList<SanPhamModel> listyeuthich;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giao_dien_chi_tiet_sp);
-        adapter= new SanPhamGH_Adapter(this,listgiohang,dao1);
+        adapter= new SanPhamGH_Adapter(this,listgiohang,daoGH);
+        adapter1= new SanPhamYT_Adapter(this,listyeuthich,daoYT);
 
         dao = new SanPhamDAO(this);
+        daoGH = new SanPhamGH_dao(this);
+        daoYT = new SanPhamYT_Dao(this);
 
+        listyeuthich=daoYT.getds();
+        listgiohang=daoGH.getds();
         list=dao.getds();
 
 
@@ -64,7 +71,7 @@ ArrayList<SanPhamModel> listyeuthich;
         tenTextView.setText(mota);
 
         TextView giaLoaiTextView = findViewById(R.id.txtgiasp_ct);
-        giaLoaiTextView.setText("đ "+gia);
+        giaLoaiTextView.setText("đ"+gia);
 
 
 
@@ -86,12 +93,10 @@ ArrayList<SanPhamModel> listyeuthich;
         imgbt_giohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listgiohang = dao1.getds();
-//
-        boolean check =dao1.themVaoGioHang(ten,Integer.parseInt(gia), loai);
+              boolean check =daoGH.themVaoGioHang(Integer.parseInt(masp),ten,Integer.parseInt(gia), loai,mota, Integer.parseInt(manhacc));
 
         if(check){
-            Toast.makeText(GiaoDienChiTietSP.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+            Toast.makeText(GiaoDienChiTietSP.this, "Thêm thành công"+mota, Toast.LENGTH_SHORT).show();
 
             adapter.notifyDataSetChanged();
         }else {
@@ -116,22 +121,15 @@ ArrayList<SanPhamModel> listyeuthich;
                 if (isRed[0]) {
                     Picasso.get().load(R.drawable.img_love).resize(40, 40).into(imgyeuthich);
 
-
-
-
-
-
                 } else {
                     Picasso.get().load(R.drawable.img_love_red).resize(40, 40).into(imgyeuthich);
 
-
-
-                    boolean check =daoYT.themVaoYeuthich(Integer.parseInt(masp),ten,Integer.parseInt(gia), loai);
+                    boolean check =daoYT.themVaoYeuthich(Integer.parseInt(masp),ten,Integer.parseInt(gia), loai,mota, Integer.parseInt(manhacc));
 
                     if(check){
                         Toast.makeText(GiaoDienChiTietSP.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
 
-                        adapter.notifyDataSetChanged();
+                        adapter1.notifyDataSetChanged();
                     }else {
                         Toast.makeText(GiaoDienChiTietSP.this, "Sản phẩm đã có trong danh sách yêu thích", Toast.LENGTH_SHORT).show();
 
@@ -142,15 +140,7 @@ ArrayList<SanPhamModel> listyeuthich;
         });
 
 
-        Intent intent1 = getIntent();
 
-        listyeuthich=daoYT.getds();
-        SanPhamModel sp = new SanPhamModel(Integer.valueOf(masp),"",0,"","",0);
-
-        if(listyeuthich.contains(sp.getMasp())){
-            Picasso.get().load(R.drawable.img_love_red).resize(40, 40).into(imgyeuthich);
-
-        }
 
 
 

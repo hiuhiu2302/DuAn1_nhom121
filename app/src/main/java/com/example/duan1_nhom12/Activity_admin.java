@@ -1,14 +1,103 @@
 package com.example.duan1_nhom12;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.Toast;
+
+import com.example.duan1_nhom12.fragment.Fragment_home;
+import com.google.android.material.navigation.NavigationView;
 
 public class Activity_admin extends AppCompatActivity {
-
+    DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+
+        Toolbar toolbar =findViewById(R.id.toolBar);
+        FrameLayout frameLayout=findViewById(R.id.frameLayout);
+        NavigationView navigationView = findViewById(R.id.navew);
+        drawerLayout =findViewById(R.id.drawerlayout);
+
+
+        setSupportActionBar(toolbar);
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.icon_menu);
+        getSupportActionBar().setTitle("Trang chủ");
+
+
+
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment = null;
+                if(item.getItemId()==R.id.mQLPhieuMuon){
+
+                    fragment = new Fragment_home();
+                } else if(item.getItemId()==R.id.mQLLoaiSach){
+
+                    fragment = new Fragment_home();
+                }else if(item.getItemId()==R.id.mQLSach){
+
+                    fragment = new Fragment_home();
+                }else if(item.getItemId()==R.id.mQlThanhVien){
+
+                    fragment = new Fragment_home();
+                }else if(item.getItemId()==R.id.mThoat){
+                    Intent intent = new Intent(Activity_admin.this, DangNhap.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+              }//else if (item.getItemId()==R.id.mDoimk){
+//                    showDialogDoiMK();
+//                }else if (item.getItemId()==R.id.mTop10){
+//                    fragment = new ThongKeTop10Fragment();
+//                }
+//                else if (item.getItemId()==R.id.mDoanhTHu){
+//                    fragment = new ThongKeDoanhThu();
+//                }
+
+                if(fragment!=null){
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.frameLayout,fragment).commit();
+                    toolbar.setTitle(item.getTitle());
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return  false;
+            }
+        });
+
+
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 }
