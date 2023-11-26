@@ -56,6 +56,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         sqLiteDatabase.execSQL("insert into nhacc values (1,'apple','abc@gmail.com','0123456789'),(2,'androi','abc@gmail.com','0123456789'),(3,'window','abc@gmail.com','0123456789')");
+
+
         sqLiteDatabase.execSQL("INSERT INTO sanpham VALUES " +
                 "(1,'Iphone 15',25000000,'dien thoai','iPhone 14 Pro 256GB likenew ATV - Vàng',1)," +
                 "(2,'Iphone 14',20000000,'dien thoai','iPhone 14 Pro 256GB likenew ATV - Vàng',1)," +

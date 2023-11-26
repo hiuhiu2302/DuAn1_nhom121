@@ -1,129 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
-    android:layout_margin="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+   android:background="@drawable/tkkhungdn"
 
-    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical"
+
+
+        android:background="@drawable/tkkhungdn"
+
+        app:cardCornerRadius="50dp"
         >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sửa thông tin sản phẩm"
-            android:textSize="25dp"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:textColor="#EF0C0C"
-           android:layout_marginBottom="10dp"
-            />
-
-        <EditText
-            android:id="@+id/edttensp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Tên sản phẩm"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/tkkhungdn"
-            android:textSize="18dp"/>
-        <EditText
-            android:id="@+id/edtgiasp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Giá sản phẩm"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/tkkhungdn"
-            android:textSize="18dp"/>
-
-        <EditText
-            android:id="@+id/edtloaisp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Loại sản phẩm"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/tkkhungdn"
-            android:textSize="18dp"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
 
-            <RadioGroup
-                android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Sửa thông tin sản phẩm"
+                android:textColor="#EF0C0C"
+                android:textSize="25dp" />
+
+            <EditText
+                android:id="@+id/edttensp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/tkkhungdn"
+                android:hint="Tên sản phẩm"
+                android:padding="10dp"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/edtgiasp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/tkkhungdn"
+                android:hint="Giá sản phẩm"
+                android:padding="10dp"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Loại sản phẩm"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:layout_width="400dp"
                 android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_width="wrap_content"
+
+                <RadioGroup
+                    android:id="@+id/rdog_suasp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="điện thoại"/>
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="laptop"/>
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="tai nghe"/>
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="game"/>
+                    android:gravity="center">
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rdo_dt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="điện thoại" />
+
+                        <RadioButton
+                            android:id="@+id/rdo_laptop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="laptop" />
+
+                        <RadioButton
+                            android:id="@+id/rdo_tainghe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="tai nghe" />
+
+                        <RadioButton
+                            android:id="@+id/rdo_game"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="game" />
+
+                    </LinearLayout>
 
 
-            </RadioGroup>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edtmotasp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/tkkhungdn"
+                android:hint="Mô tả sản phẩm"
+                android:padding="10dp"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/edtnhaccsp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/tkkhungdn"
+                android:hint="Mã nhà sản phẩm"
+                android:padding="10dp"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <Button
+                    android:id="@+id/btnsuasp"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Cập nhập" />
+
+                <Button
+                    android:id="@+id/btnhuy"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Hủy" />
+            </LinearLayout>
 
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-        <EditText
-            android:id="@+id/edtmotasp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Mô tả sản phẩm"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/tkkhungdn"
-            android:textSize="18dp"/>
-        <EditText
-            android:id="@+id/edtnhaccsp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Mã nhà sản phẩm"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/tkkhungdn"
-            android:textSize="18dp"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <Button
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Cập nhập"/>
-            <Button
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Hủy"/>
-        </LinearLayout>
 
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+</LinearLayout>

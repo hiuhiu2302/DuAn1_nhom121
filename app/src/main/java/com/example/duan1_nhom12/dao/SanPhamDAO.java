@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class SanPhamDAO {
     DatabaseHelper dbHelper ;
-    SQLiteDatabase db;
+
     public SanPhamDAO(Context context){
         dbHelper= new DatabaseHelper(context);
     }
@@ -56,7 +56,7 @@ public class SanPhamDAO {
         contentValues.put("giasp",giatien);
         contentValues.put("loaisp",loai);
         contentValues.put("motasp",motasp);
-        contentValues.put("nhacc",manhacc);
+        contentValues.put("manhacc",manhacc);
         long check = sqLiteDatabase.update("sanpham",contentValues,"masp=?",new String[]{String.valueOf(masp)});
         if(check==-1)
             return  false;
@@ -68,7 +68,8 @@ public class SanPhamDAO {
 
 
     public long delete(String id) {
-        return db.delete("sanphamyt", "masp = ?", new String[]{String.valueOf(id)});
+        SQLiteDatabase db= dbHelper.getWritableDatabase();
+        return db.delete("sanpham", "masp = ?", new String[]{String.valueOf(id)});
     }
 
 
