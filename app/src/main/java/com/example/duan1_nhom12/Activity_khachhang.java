@@ -2,9 +2,12 @@ package com.example.duan1_nhom12;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.duan1_nhom12.adapter.SanPhamAdapter;
 import com.example.duan1_nhom12.fragment.Fragment_home;
 import com.example.duan1_nhom12.fragment.Fragment_thongbao;
 import com.example.duan1_nhom12.fragment.Fragment_thongtin;
@@ -44,6 +47,10 @@ public class Activity_khachhang extends AppCompatActivity {
                                 .replace(R.id.frameLayout, new Fragment_home())
                                 .commit();
 
+                        Intent intent= getIntent();
+                        String dntk = intent.getStringExtra("dntk");
+                        Toast.makeText(Activity_khachhang.this, ""+dntk, Toast.LENGTH_SHORT).show();
+
                         break;
 
                     case 2:
@@ -79,4 +86,16 @@ public class Activity_khachhang extends AppCompatActivity {
         });
 
     }
+
+
+//    private void guimadn(){
+//
+//        Intent intent=getIntent();
+//        String dntk = intent.getStringExtra("dntk");
+//        SanPhamAdapter sanpham = new SanPhamAdapter(dntk);
+//        sanpham.setInfo(dntk);
+//
+//
+//
+//    }
 }

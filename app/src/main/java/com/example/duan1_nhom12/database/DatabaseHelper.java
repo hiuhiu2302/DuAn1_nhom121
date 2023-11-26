@@ -5,9 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.duan1_nhom12.adapter.SanPhamAdapter;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
-        super(context,"QL",null,9);
+        super(context,"QL",null,2);
     }
 
     @Override
@@ -31,10 +33,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(dbKhachHang);
 
 //mã hóa đơn , username admin , username khách hàng , tên khách hàng , số điện thoại khách hàng , địa chỉ khách hàng ,mã sản phẩm,tên sản phẩm , giá sản phẩm ,
-       String dbHoaDon ="create table hoadon(mahd primary key autoincrement, usrnameadmin text references admin(username),usrnamekh text references khachhang(username),masp integer references sanpham(masp))";
-        //String dbHoaDon="create table hoadon(mahd integer PRIMARY KEY autoincrement,maadmin text references admin(username),makhachhang text references khachhang(username),tongtien integer )";
-
-        sqLiteDatabase.execSQL(dbHoaDon);
+//       String dbHoaDon ="create table hoadon(mahd primary key autoincrement, usrnameadmin text references admin(username),usrnamekh text references khachhang(username),masp integer references sanpham(masp))";
+//        //String dbHoaDon="create table hoadon(mahd integer PRIMARY KEY autoincrement,maadmin text references admin(username),makhachhang text references khachhang(username),tongtien integer )";
+//
+//        sqLiteDatabase.execSQL(dbHoaDon);
 
 
 

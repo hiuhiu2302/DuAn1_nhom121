@@ -4,11 +4,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment_quanly.fragment_QLSanPham">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+      android:gravity="center"
+      android:id="@+id/item"
+
+      android:layout_below="@+id/cardView"
+      android:background="#00000000"
+
+      android:orientation="horizontal"
+
+      >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+
+
+        android:background="@drawable/tk_khung"
+
+        >
+      <ImageButton
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          android:layout_margin="5dp"
+          android:background="#00000000"
+          android:src="@drawable/img_phoneicon" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+
+        android:background="@drawable/tk_khung"
+
+        >
+      <ImageButton
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          android:layout_margin="5dp"
+          android:background="#00000000"
+          android:src="@drawable/icon_laptop" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+
+        android:background="@drawable/tk_khung"
+
+        >
+      <ImageButton
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          android:layout_margin="5dp"
+          android:background="#00000000"
+          android:src="@drawable/icon_headphone" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+
+        android:background="@drawable/tk_khung"
+
+        >
+      <ImageButton
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          android:layout_margin="5dp"
+          android:background="#00000000"
+          android:src="@drawable/icon_game" />
+    </LinearLayout>
+
+
+
+
+
+  </LinearLayout>
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rcviewQLsp"
+      android:layout_marginTop="100dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
 
 </FrameLayout>

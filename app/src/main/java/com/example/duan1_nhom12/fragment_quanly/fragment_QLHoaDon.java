@@ -10,13 +10,12 @@ import android.view.ViewGroup;
 
 import com.example.duan1_nhom12.R;
 
-public class fragment_QLNhaCungCap extends Fragment {
-
+public class fragment_QLHoaDon extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__q_l_nha_cung_cap, container, false);
+        return inflater.inflate(R.layout.fragment__q_l_hoa_don, container, false);
     }
 }
