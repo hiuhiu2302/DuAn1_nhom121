@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+>>>>>>> github/master
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,7 +48,11 @@ public class SanPhamAdapter_QL extends RecyclerView.Adapter<SanPhamAdapter_QL.Vi
     public void onBindViewHolder(@NonNull ViewHodel holder,@SuppressLint("RecyclerView") int position) {
         holder.txtten.setText(list.get(position).getTen());
         holder.txtgia.setText("Giá: " + list.get(position).getGia());
+<<<<<<< HEAD
      //   holder.txtloai.setText("Loại: " + list.get(position).getLoai());
+=======
+        holder.txtloai.setText("Loại: " + list.get(position).getLoai());
+>>>>>>> github/master
 
         //holder.txtloai.setVisibility(View.INVISIBLE);
 //
@@ -97,6 +104,7 @@ public class SanPhamAdapter_QL extends RecyclerView.Adapter<SanPhamAdapter_QL.Vi
                 return false;
             }
         });
+<<<<<<< HEAD
 //////////////////////////////////////////////////////
         holder.txtsua.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +128,10 @@ public class SanPhamAdapter_QL extends RecyclerView.Adapter<SanPhamAdapter_QL.Vi
         });
     }
     /////////////////////////////////////////////
+=======
+
+    }
+>>>>>>> github/master
 
     @Override
     public int getItemCount() {
