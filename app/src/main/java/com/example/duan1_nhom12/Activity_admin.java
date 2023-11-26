@@ -22,6 +22,10 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.duan1_nhom12.fragment.Fragment_home;
+import com.example.duan1_nhom12.fragment_quanly.fragment_QLHoaDon;
+import com.example.duan1_nhom12.fragment_quanly.fragment_QLKhachHang;
+import com.example.duan1_nhom12.fragment_quanly.fragment_QLNhaCungCap;
+import com.example.duan1_nhom12.fragment_quanly.fragment_QLSanPham;
 import com.google.android.material.navigation.NavigationView;
 
 public class Activity_admin extends AppCompatActivity {
@@ -50,19 +54,23 @@ public class Activity_admin extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
-                if(item.getItemId()==R.id.mQLPhieuMuon){
+                if(item.getItemId()==R.id.hometrangchu){
 
                     fragment = new Fragment_home();
-                } else if(item.getItemId()==R.id.mQLLoaiSach){
+                } else if(item.getItemId()==R.id.QLsanpham){
 
-                    fragment = new Fragment_home();
-                }else if(item.getItemId()==R.id.mQLSach){
+                    fragment = new fragment_QLSanPham();
+                }else if(item.getItemId()==R.id.QLkhachhang){
 
-                    fragment = new Fragment_home();
-                }else if(item.getItemId()==R.id.mQlThanhVien){
+                    fragment = new fragment_QLKhachHang();
+                }else if(item.getItemId()==R.id.QLnhacc){
 
-                    fragment = new Fragment_home();
-                }else if(item.getItemId()==R.id.mThoat){
+                    fragment = new fragment_QLNhaCungCap();
+                }else if(item.getItemId()==R.id.QLhoadon){
+
+                    fragment = new fragment_QLHoaDon();
+                }
+                else if(item.getItemId()==R.id.mThoat){
                     Intent intent = new Intent(Activity_admin.this, DangNhap.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

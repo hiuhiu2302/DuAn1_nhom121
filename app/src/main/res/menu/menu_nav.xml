@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/mQLPhieuMuon"
-    android:title="Quản lý phiếu mượn"
+<item android:id="@+id/hometrangchu"
+    android:title="Trang chủ"
     android:icon="@drawable/icon_home"/>
-    <item android:id="@+id/mQLLoaiSach"
-        android:title="Quản lý loại sách"
+    <item android:id="@+id/QLsanpham"
+        android:title="Quản lý sản phẩm"
         android:icon="@drawable/icon_home"/>
-    <item android:id="@+id/mQLSach"
-        android:title="Quản lý sách"
+    <item android:id="@+id/QLkhachhang"
+        android:title="Quản khách hàng"
         android:icon="@drawable/icon_home"/>
-    <item android:id="@+id/mQlThanhVien"
-        android:title="Quản lý thành viên"
+    <item android:id="@+id/QLnhacc"
+        android:title="Quản lý nhà cung cấp"
+        android:icon="@drawable/icon_home"/>
+    <item android:id="@+id/QLhoadon"
+        android:title="Quản lý hóa đơn"
         android:icon="@drawable/icon_home"/>
 
  <item

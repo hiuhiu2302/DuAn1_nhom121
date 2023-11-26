@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sửa thông tin sản phẩm"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="#EF0C0C"
+           android:layout_marginBottom="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edttensp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Tên sản phẩm"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tkkhungdn"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/edtgiasp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Giá sản phẩm"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tkkhungdn"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/edtloaisp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Loại sản phẩm"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tkkhungdn"
+            android:textSize="18dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="điện thoại"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="laptop"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="tai nghe"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="game"/>
+
+                </LinearLayout>
+
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtmotasp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Mô tả sản phẩm"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tkkhungdn"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/edtnhaccsp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Mã nhà sản phẩm"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tkkhungdn"
+            android:textSize="18dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Cập nhập"/>
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Hủy"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

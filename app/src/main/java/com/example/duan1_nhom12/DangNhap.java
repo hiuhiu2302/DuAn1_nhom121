@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.duan1_nhom12.adapter.SanPhamAdapter;
 import com.example.duan1_nhom12.database.DatabaseHelper;
+import com.example.duan1_nhom12.fragment.Fragment_home;
 
 public class DangNhap extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
@@ -37,12 +39,23 @@ public class DangNhap extends AppCompatActivity {
                 }
                 else {
                     String role = databaseHelper.checkCredentials(username, password);
+
                     if (role.equals("admin")) {
                         Intent intent = new Intent(DangNhap.this, Activity_admin.class);
+//                        Intent intent1 =new Intent(DangNhap.this, Activity_khachhang.class);
+//                        intent1.putExtra("dntk", "1");
+
                         startActivity(intent);
                     } else if (role.equals("khachhang")) {
                         Intent intent = new Intent(DangNhap.this, Activity_khachhang.class);
+                       // Intent intent1 =new Intent(DangNhap.this, Activity_khachhang.class);
+
+                       // intent.putExtra("dntk", "2");
+
+                      //  startActivity(intent1);
                         startActivity(intent);
+
+
                     } else {
                         Toast.makeText(DangNhap.this, "Tài khoản hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                     }

@@ -1,5 +1,7 @@
 package com.example.duan1_nhom12.adapter;
 
+import static android.content.Intent.parseIntent;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,18 +30,32 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHode
     private SanPhamDAO dao;
 
 
+
+//    private String madn;
+//
+//    public SanPhamAdapter(String madn){
+//        this.madn=madn;
+//    }
+//    public void setInfo(String madn) {
+//        this.madn = madn;
+//    }
+
+
     public SanPhamAdapter(Context context, ArrayList<SanPhamModel> list, SanPhamDAO dao) {
         this.context = context;
         this.list = list;
         this.dao = dao;
     }
 
+
+
     @NonNull
     @Override
     public ViewHodel onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_sanpham, parent, false);
 
+
+        View view = inflater.inflate(R.layout.item_sanpham, parent, false);
 
 
 
@@ -50,6 +67,16 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHode
         holder.txtten.setText(list.get(position).getTen());
         holder.txtgia.setText("Giá: " + list.get(position).getGia());
         holder.txtloai.setText("Loại: " + list.get(position).getLoai());
+
+        //holder.txtloai.setVisibility(View.INVISIBLE);
+//
+//        if(madn.equals("2")){
+//            holder.txtloai.setVisibility(View.INVISIBLE);
+//
+//        }
+
+
+
         SanPhamModel sp = list.get(position);
         if (sp.getLoai().equals("dien thoai")) {
             Picasso.get().load(R.drawable.img_phone).resize(190,150).centerCrop().into(holder.img);
@@ -86,6 +113,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHode
                 intent.putExtra("mota", mota);
                 intent.putExtra("manhacc",manhacc);
 
+
                 context.startActivity(intent);
                 return false;
             }
@@ -113,6 +141,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHode
             img = itemView.findViewById(R.id.imgsanpham);
 
 
+
+
         }
     }
+
 }

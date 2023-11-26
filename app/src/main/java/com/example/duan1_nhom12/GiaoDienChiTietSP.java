@@ -53,8 +53,7 @@ ArrayList<SanPhamModel> listyeuthich;
         imgbtTrove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GiaoDienChiTietSP.this, Activity_khachhang.class);
-                startActivity(intent);
+               finish();
             }
         });
 
