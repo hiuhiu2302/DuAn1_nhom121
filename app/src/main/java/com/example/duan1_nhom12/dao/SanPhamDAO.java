@@ -38,7 +38,7 @@ public class SanPhamDAO {
         contentValues.put("giasp",giatien);
         contentValues.put("loaisp",loai);
         contentValues.put("motasp",motasp);
-        contentValues.put("nhacc",manhacc);
+        contentValues.put("manhacc",manhacc);
 
         long check = sqLiteDatabase.insert("sanpham",null,contentValues);
         if(check==-1)
@@ -51,7 +51,7 @@ public class SanPhamDAO {
     public  boolean capnhap(int masp,String ten ,int giatien,String loai,String motasp, int  manhacc){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-
+        contentValues.put("masp",masp);
         contentValues.put("tensp",ten);
         contentValues.put("giasp",giatien);
         contentValues.put("loaisp",loai);

@@ -9,6 +9,16 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text=" APP HAHSHOP"
+        android:drawableLeft="@drawable/icon_shopapp"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/backgroudmau"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Danh sách sản phẩm yêu thích"
         android:textSize="30dp"
         android:gravity="center"

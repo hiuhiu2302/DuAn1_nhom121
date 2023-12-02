@@ -11,6 +11,9 @@ public class KhachHangModel {
         return username;
     }
 
+    public KhachHangModel() {
+    }
+
     public KhachHangModel(String username, String ten, String passwork, String sdt, String diachi) {
         this.username = username;
         this.passwork = passwork;

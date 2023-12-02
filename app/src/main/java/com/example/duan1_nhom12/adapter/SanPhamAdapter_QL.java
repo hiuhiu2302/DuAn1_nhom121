@@ -104,7 +104,7 @@ public class SanPhamAdapter_QL extends RecyclerView.Adapter<SanPhamAdapter_QL.Vi
             @Override
             public void onClick(View view) {
 
-                showDialog(list.get(position));
+                showDialog1(list.get(position));
 
             }
         });
@@ -165,19 +165,19 @@ private void showDialog(SanPhamModel s){
     AlertDialog alertDialog=builder.create();
     alertDialog.show();
 
-    EditText edtten = view .findViewById(R.id.edttensp);
-    EditText edtgia = view .findViewById(R.id.edtgiasp);
-    EditText edtmota = view .findViewById(R.id.edtmotasp);
-    EditText edtnhacc = view .findViewById(R.id.edtnhaccsp);
+    EditText edtten = view .findViewById(R.id.edttensp_sua);
+    EditText edtgia = view .findViewById(R.id.edtgiasp_sua);
+    EditText edtmota = view .findViewById(R.id.edtmotasp_sua);
+    EditText edtnhacc = view .findViewById(R.id.edtnhaccsp_sua);
 
     RadioGroup rdog= view .findViewById(R.id.rdog_suasp);
-    RadioButton rdodt =view.findViewById(R.id.rdo_dt);
-    RadioButton rdolaptop =view.findViewById(R.id.rdo_laptop);
-    RadioButton rdobtainghe =view.findViewById(R.id.rdo_tainghe);
-    RadioButton rdobgame =view.findViewById(R.id.rdo_game);
+    RadioButton rdodt =view.findViewById(R.id.rdo_dt_sua);
+    RadioButton rdolaptop =view.findViewById(R.id.rdo_laptop_sua);
+    RadioButton rdobtainghe =view.findViewById(R.id.rdo_tainghe_sua);
+    RadioButton rdobgame =view.findViewById(R.id.rdo_game_sua);
 
-    Button btnsua =view.findViewById(R.id.btnsuasp);
-    Button btnhuy =view.findViewById(R.id.btnhuy);
+    Button btnsua =view.findViewById(R.id.btnsuasp_sua);
+    Button btnhuy =view.findViewById(R.id.btnhuy_sua);
 
     edtten.setText(s.getTen());
     edtgia.setText(""+s.getGia());
@@ -220,7 +220,6 @@ private void showDialog(SanPhamModel s){
 
             }else {
                 Toast.makeText(context, "Cập nhập thất bại", Toast.LENGTH_SHORT).show();
-
             }
 
         }
@@ -233,5 +232,100 @@ private void showDialog(SanPhamModel s){
     });
 
 }
+
+
+
+    public void showDialog1(SanPhamModel sp ){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_sua_sp,null);
+        builder.setView(view);
+        AlertDialog alertDialog= builder.create();
+        alertDialog.show();
+
+        EditText edttensp,edtgiasp,edtmacc,edtmota;
+        edttensp= view.findViewById(R.id.edttensp_sua);
+        edtgiasp= view.findViewById(R.id.edtgiasp_sua);
+        edtmacc= view.findViewById(R.id.edtnhaccsp_sua);
+        edtmota= view.findViewById(R.id.edtmotasp_sua);
+
+        RadioButton rdodt,rdolaptop,rdotainghe,rdogame;
+        rdodt = view.findViewById(R.id.rdo_dt_sua);
+        rdolaptop = view.findViewById(R.id.rdo_laptop_sua);
+        rdotainghe = view.findViewById(R.id.rdo_tainghe_sua);
+        rdogame = view.findViewById(R.id.rdo_game_sua);
+
+        Button btncn , btnhuy;
+        btncn= view.findViewById(R.id.btnsuasp_sua);
+        btnhuy= view.findViewById(R.id.btnhuy_sua);
+
+        edttensp.setText(sp.getTen());
+        edtgiasp.setText(""+sp.getGia());
+        edtmacc.setText(""+sp.getManhacc());
+        edtmota.setText(sp.getMotasp());
+
+        if(sp.getLoai().equals("dien thoai")){
+            rdodt.setChecked(true);
+        }
+        if(sp.getLoai().equals("laptop")){
+            rdolaptop.setChecked(true);
+        }
+        if(sp.getLoai().equals("tainghe")){
+            rdotainghe.setChecked(true);
+        }
+        if(sp.getLoai().equals("game")){
+            rdogame.setChecked(true);
+        }
+
+        btnhuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+        btncn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String loai="dien thoai";
+                if(rdodt.isChecked()){
+                    loai="dien thoai";
+                }
+                if(rdolaptop.isChecked()){
+                    loai="laptop";
+                }
+                if(rdotainghe.isChecked()){
+                    loai="tainghe";
+                }
+                if(rdogame.isChecked()){
+                    loai="game";
+                }
+
+                String tensp = edttensp.getText().toString();
+                int giasp = Integer.parseInt(edtgiasp.getText().toString());
+                String mota =edtmota.getText().toString();
+                int manhacc= Integer.parseInt(edtmacc.getText().toString());
+
+                int masp =sp.getMasp();
+                boolean check = dao.capnhap(masp,tensp,giasp,loai,mota,manhacc);
+                if(check){
+                    Toast.makeText(context, "Cập nhập thành công", Toast.LENGTH_SHORT).show();
+
+                    list.clear();
+                    list=dao.getds();
+                    notifyDataSetChanged();
+                    alertDialog.dismiss();
+
+                }else {
+                    Toast.makeText(context, "Cập nhập thất bại", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
+
+
+
+    }
 
 }

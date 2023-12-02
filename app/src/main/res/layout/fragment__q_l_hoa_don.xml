@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment_quanly.fragment_QLHoaDon">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text=" APP HAHSHOP"
+       android:drawableLeft="@drawable/icon_shopapp"
+       android:padding="10dp"
+       android:layout_marginTop="10dp"
+       android:background="@drawable/backgroudmau"
+       android:textSize="18dp"/>
 
-</FrameLayout>
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rcview_hoadon"
+       android:layout_marginTop="70dp"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
+
+   <com.google.android.material.floatingactionbutton.FloatingActionButton
+       android:id="@+id/flthemhoadon"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentEnd="true"
+       android:layout_alignParentBottom="true"
+       android:layout_margin="20dp"
+       android:src="@drawable/icon_shopapp" />
+</RelativeLayout>

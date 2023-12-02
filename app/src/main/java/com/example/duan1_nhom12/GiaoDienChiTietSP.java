@@ -2,7 +2,9 @@ package com.example.duan1_nhom12;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -15,6 +17,7 @@ import com.example.duan1_nhom12.adapter.SanPhamYT_Adapter;
 import com.example.duan1_nhom12.dao.SanPhamDAO;
 import com.example.duan1_nhom12.dao.SanPhamGH_dao;
 import com.example.duan1_nhom12.dao.SanPhamYT_Dao;
+import com.example.duan1_nhom12.dao.ThongBaoDao;
 import com.example.duan1_nhom12.model.SanPhamModel;
 import com.squareup.picasso.Picasso;
 
@@ -33,6 +36,9 @@ SanPhamYT_Adapter adapter1;
 ArrayList<SanPhamModel> listgiohang;
 ArrayList<SanPhamModel> listyeuthich;
 
+
+ThongBaoDao daotb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,7 @@ ArrayList<SanPhamModel> listyeuthich;
         dao = new SanPhamDAO(this);
         daoGH = new SanPhamGH_dao(this);
         daoYT = new SanPhamYT_Dao(this);
+        daotb  = new ThongBaoDao(this);
 
         listyeuthich=daoYT.getds();
         listgiohang=daoGH.getds();
@@ -95,7 +102,11 @@ ArrayList<SanPhamModel> listyeuthich;
               boolean check =daoGH.themVaoGioHang(Integer.parseInt(masp),ten,Integer.parseInt(gia), loai,mota, Integer.parseInt(manhacc));
 
         if(check){
-            Toast.makeText(GiaoDienChiTietSP.this, "Thêm thành công"+mota, Toast.LENGTH_SHORT).show();
+            Toast.makeText(GiaoDienChiTietSP.this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+
+
+            String tb ="Bạn đã thêm sản phẩm "+mota+" vào giỏ hàng";
+            boolean check1 = daotb.themthongbao(tb);
 
             adapter.notifyDataSetChanged();
         }else {
@@ -126,7 +137,12 @@ ArrayList<SanPhamModel> listyeuthich;
                     boolean check =daoYT.themVaoYeuthich(Integer.parseInt(masp),ten,Integer.parseInt(gia), loai,mota, Integer.parseInt(manhacc));
 
                     if(check){
-                        Toast.makeText(GiaoDienChiTietSP.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GiaoDienChiTietSP.this, "Thêm vào danh sách yêu thích thành công", Toast.LENGTH_SHORT).show();
+
+                        String tb ="Bạn đã thêm sản phẩm "+mota+" vào trang yêu thích";
+                        boolean check1 = daotb.themthongbao(tb);
+
+
 
                         adapter1.notifyDataSetChanged();
                     }else {
@@ -135,6 +151,21 @@ ArrayList<SanPhamModel> listyeuthich;
                     }
                 }
                 isRed[0] = !isRed[0];
+            }
+        });
+
+        TextView txtmuahang= findViewById(R.id.txtmuahang_ct);
+        txtmuahang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1= new Intent(GiaoDienChiTietSP.this,GiaoDienThanhToan.class);
+                intent1.putExtra("masp",masp);
+                intent1.putExtra("mota",mota);
+                intent1.putExtra("gia",gia);
+                intent1.putExtra("loai",loai);
+
+
+                startActivity(intent1);
             }
         });
 

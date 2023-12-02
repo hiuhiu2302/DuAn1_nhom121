@@ -8,6 +8,9 @@ public class SanPhamModel {
     private String motasp;
     private int manhacc;
 
+    public SanPhamModel() {
+    }
+
     public SanPhamModel(int masp, String ten, int gia, String loai, String motasp, int manhacc) {
         this.masp = masp;
         this.ten = ten;

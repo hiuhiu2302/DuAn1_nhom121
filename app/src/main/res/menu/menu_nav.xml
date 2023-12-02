@@ -5,28 +5,28 @@
     android:icon="@drawable/icon_home"/>
     <item android:id="@+id/QLsanpham"
         android:title="Quản lý sản phẩm"
-        android:icon="@drawable/icon_home"/>
+        android:icon="@drawable/icon_product"/>
     <item android:id="@+id/QLkhachhang"
         android:title="Quản khách hàng"
-        android:icon="@drawable/icon_home"/>
+        android:icon="@drawable/icon_preson1"/>
     <item android:id="@+id/QLnhacc"
         android:title="Quản lý nhà cung cấp"
-        android:icon="@drawable/icon_home"/>
+        android:icon="@drawable/icon_nhacc1"/>
     <item android:id="@+id/QLhoadon"
         android:title="Quản lý hóa đơn"
-        android:icon="@drawable/icon_home"/>
+        android:icon="@drawable/icon_bill"/>
 
  <item
      android:title="Thống kê">
 
 <menu>
 <item android:id="@+id/mTop10"
-    android:title="Top 10 sách bán nhiều nhất"
-    android:icon="@drawable/icon_home"/>
+    android:title="Top 10 sản phẩm bán nhiều nhất"
+    android:icon="@drawable/icon_top"/>
 
     <item android:id="@+id/mDoanhTHu"
         android:title="Doanh thu"
-        android:icon="@drawable/icon_home"/>
+        android:icon="@drawable/icon_doanhthu"/>
 
 </menu>
 
@@ -38,11 +38,11 @@
         <menu>
             <item android:id="@+id/mDoimk"
                 android:title="Đổi mật khẩu"
-                android:icon="@drawable/icon_home"/>
+                android:icon="@drawable/icon_setting"/>
 
             <item android:id="@+id/mThoat"
                 android:title="Thoát"
-                android:icon="@drawable/icon_home"/>
+                android:icon="@drawable/icon_exit"/>
 
 
 

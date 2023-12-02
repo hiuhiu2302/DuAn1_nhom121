@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan1_nhom12.GiaoDienChiTietSP;
 import com.example.duan1_nhom12.R;
 import com.example.duan1_nhom12.dao.SanPhamGH_dao;
+import com.example.duan1_nhom12.dao.ThongBaoDao;
 import com.example.duan1_nhom12.model.SanPhamModel;
 import com.squareup.picasso.Picasso;
 
@@ -26,6 +28,7 @@ public class SanPhamGH_Adapter  extends RecyclerView.Adapter<SanPhamGH_Adapter.V
     private Context context;
     private ArrayList<SanPhamModel> list;
     private SanPhamGH_dao dao;
+    private ThongBaoDao daotb;
 
     public SanPhamGH_Adapter(Context context, ArrayList<SanPhamModel> list, SanPhamGH_dao dao) {
         this.context = context;
@@ -100,6 +103,12 @@ public class SanPhamGH_Adapter  extends RecyclerView.Adapter<SanPhamGH_Adapter.V
                 list.clear();
                 list=dao.getds();
                 notifyDataSetChanged();
+
+                daotb =new ThongBaoDao(context);
+                String mota = list.get(position).getMotasp();
+
+                String tb ="Bạn đã xóa sản phẩm "+mota+" ra khỏi giỏ hàng";
+                boolean check1 = daotb.themthongbao(tb);
             }
         });
 

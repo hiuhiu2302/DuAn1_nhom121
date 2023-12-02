@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment_quanly.fragment_QLSanPham">
-  <LinearLayout
+
+  <TextView
+      android:id="@+id/banner"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_marginTop="10dp"
+      android:background="@drawable/backgroudmau"
+      android:drawableLeft="@drawable/icon_shopapp"
+      android:padding="10dp"
+      android:text=" APP HAHSHOP"
+      android:textSize="18dp" />
 
-      android:gravity="center"
+  <LinearLayout
       android:id="@+id/item"
+      android:layout_width="match_parent"
 
-      android:layout_below="@+id/cardView"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/banner"
+
+
+
+
+
       android:background="#00000000"
+      android:gravity="center"
+      android:orientation="horizontal">
 
-      android:orientation="horizontal"
-
-      >
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +41,7 @@
         android:background="@drawable/tk_khung"
 
         >
+
       <ImageButton
           android:layout_width="45dp"
           android:layout_height="45dp"
@@ -33,6 +49,7 @@
           android:background="#00000000"
           android:src="@drawable/img_phoneicon" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +58,7 @@
         android:background="@drawable/tk_khung"
 
         >
+
       <ImageButton
           android:layout_width="45dp"
           android:layout_height="45dp"
@@ -48,6 +66,7 @@
           android:background="#00000000"
           android:src="@drawable/icon_laptop" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,6 +75,7 @@
         android:background="@drawable/tk_khung"
 
         >
+
       <ImageButton
           android:layout_width="45dp"
           android:layout_height="45dp"
@@ -63,6 +83,7 @@
           android:background="#00000000"
           android:src="@drawable/icon_headphone" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,6 +92,7 @@
         android:background="@drawable/tk_khung"
 
         >
+
       <ImageButton
           android:layout_width="45dp"
           android:layout_height="45dp"
@@ -80,14 +102,24 @@
     </LinearLayout>
 
 
-
-
-
   </LinearLayout>
+
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rcviewQLsp"
-      android:layout_marginTop="100dp"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+      android:layout_height="match_parent"
+      android:layout_below="@+id/item"
+       />
 
-</FrameLayout>
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:id="@+id/flthemsanpham"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="20dp"
+      android:layout_marginBottom="20dp"
+      android:src="@drawable/icon_shopapp" />
+</RelativeLayout>

@@ -2,6 +2,8 @@ package com.example.duan1_nhom12.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1_nhom12.R;
+import com.example.duan1_nhom12.ThongTinKhachHangChiTiet;
 import com.example.duan1_nhom12.dao.KhachHangDao;
 import com.example.duan1_nhom12.dao.SanPhamDAO;
 import com.example.duan1_nhom12.model.KhachHangModel;
@@ -45,7 +48,17 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
         holder.txtsdt.setText(list.get(position).getSdt());
 
 
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent intent = new Intent(context, ThongTinKhachHangChiTiet.class);
+                String username = list.get(position).getUsername();
+                intent.putExtra("ctkh",username);
+                context.startActivity(intent);
 
+                return false;
+            }
+        });
 
 
     }

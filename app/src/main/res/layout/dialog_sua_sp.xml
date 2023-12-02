@@ -32,12 +32,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="Sửa thông tin sản phẩm"
+                android:text="Cập nhập thông tin sản phẩm"
                 android:textColor="#EF0C0C"
                 android:textSize="25dp" />
 
             <EditText
-                android:id="@+id/edttensp"
+                android:id="@+id/edttensp_sua"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
@@ -47,7 +47,7 @@
                 android:textSize="18dp" />
 
             <EditText
-                android:id="@+id/edtgiasp"
+                android:id="@+id/edtgiasp_sua"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
@@ -73,38 +73,35 @@
                     android:id="@+id/rdog_suasp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:gravity="center">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/rdo_dt"
+                            android:id="@+id/rdo_dt_sua"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="điện thoại" />
 
                         <RadioButton
-                            android:id="@+id/rdo_laptop"
+                            android:id="@+id/rdo_laptop_sua"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="laptop" />
 
                         <RadioButton
-                            android:id="@+id/rdo_tainghe"
+                            android:id="@+id/rdo_tainghe_sua"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="tai nghe" />
 
                         <RadioButton
-                            android:id="@+id/rdo_game"
+                            android:id="@+id/rdo_game_sua"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="game" />
 
-                    </LinearLayout>
+
 
 
                 </RadioGroup>
@@ -112,7 +109,7 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/edtmotasp"
+                android:id="@+id/edtmotasp_sua"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
@@ -122,7 +119,7 @@
                 android:textSize="18dp" />
 
             <EditText
-                android:id="@+id/edtnhaccsp"
+                android:id="@+id/edtnhaccsp_sua"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
@@ -137,14 +134,14 @@
                 android:layout_gravity="center">
 
                 <Button
-                    android:id="@+id/btnsuasp"
+                    android:id="@+id/btnsuasp_sua"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:text="Cập nhập" />
 
                 <Button
-                    android:id="@+id/btnhuy"
+                    android:id="@+id/btnhuy_sua"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"

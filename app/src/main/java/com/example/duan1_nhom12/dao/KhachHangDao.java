@@ -73,4 +73,27 @@ public class KhachHangDao {
         SQLiteDatabase db= dbHelper.getWritableDatabase();
         return db.delete("khachhang", "username = ?", new String[]{String.valueOf(id)});
     }
+
+
+    public KhachHangModel getCustomerByUsername(String username) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM khachhang WHERE username = ?";
+        String[] selectionArgs = {username};
+        Cursor cursor = db.rawQuery(query, selectionArgs);
+
+        if (cursor.moveToFirst()) {
+            KhachHangModel customer = new KhachHangModel();
+            customer.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+            customer.setTen(cursor.getString(cursor.getColumnIndex("hoten")));
+            customer.setPasswork(cursor.getString(cursor.getColumnIndex("password")));
+            customer.setSdt(cursor.getString(cursor.getColumnIndex("sdt")));
+            customer.setDiachi(cursor.getString(cursor.getColumnIndex("diachi")));
+            cursor.close();
+            return customer;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
 }

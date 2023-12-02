@@ -1,66 +1,131 @@
 package com.example.duan1_nhom12.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.duan1_nhom12.DangNhap;
 import com.example.duan1_nhom12.R;
+import com.example.duan1_nhom12.ThongTinKhachHangChiTiet;
+import com.example.duan1_nhom12.fragment_quanly.fragment_QLHoaDon;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_thongtin#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class Fragment_thongtin extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Fragment_thongtin() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_thongtin.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Fragment_thongtin newInstance(String param1, String param2) {
-        Fragment_thongtin fragment = new Fragment_thongtin();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_thongtin, container, false);
+        View view = inflater.inflate(R.layout.fragment_thongtin, container, false);
+
+        ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
+        ArrayList<SlideModel> slideModels= new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.img_slideqc, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img_slideqc1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img_slideqc2, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img_slideqc3, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img_slideqc4, ScaleTypes.FIT));
+
+
+        imageSlider.setImageList(slideModels,ScaleTypes.FIT);
+
+        /////sự kiện đăng xuất tài khoản của khách hàng
+        TextView txtdx = view .findViewById(R.id.txtdx_ftt);
+        txtdx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getActivity(), DangNhap.class);
+                startActivity(intent);
+            }
+        });
+        ///////////////sự kiện chuyển sang màn hình chi tiết thông tin
+        LinearLayout layout = view.findViewById(R.id.layout_tt_ftt);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getActivity(), ThongTinKhachHangChiTiet.class);
+                startActivity(intent);
+            }
+        });
+
+        /////////////////sự kiện các nút xem tiếp thông tin
+        ImageButton imgbtdt = view.findViewById(R.id.ibtdt);
+        ImageButton imgbtlaptop = view.findViewById(R.id.ibtlaptop);
+        ImageButton imgbttainghe = view.findViewById(R.id.ibttainghe);
+        ImageButton imgbtgame = view.findViewById(R.id.ibtgame);
+
+        imgbtdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),fragment_sanphamloai.class);
+                intent.putExtra("loai","dien thoai");
+                startActivity(intent);
+
+            }
+        });
+
+        imgbtlaptop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),fragment_sanphamloai.class);
+                intent.putExtra("loai","laptop");
+                startActivity(intent);
+
+            }
+        });
+
+
+        imgbttainghe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),fragment_sanphamloai.class);
+                intent.putExtra("loai","tainghe");
+                startActivity(intent);
+
+            }
+        });
+
+
+        imgbtgame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),fragment_sanphamloai.class);
+                intent.putExtra("loai","game");
+                startActivity(intent);
+
+            }
+        });
+
+
+        /////// sự kiện chuyển giao diện hóa đơn
+        LinearLayout layouthd = view.findViewById(R.id.layoutdonmua_ftt);
+        layouthd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frameLayout, new fragment_QLHoaDon());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        return view;
     }
 }

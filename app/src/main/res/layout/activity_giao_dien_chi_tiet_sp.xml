@@ -22,6 +22,13 @@
             android:id="@+id/imgbttv"
             android:src="@drawable/icon_back" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết sản phẩm"
+            android:textSize="22dp"
+
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 

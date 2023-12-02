@@ -1,5 +1,6 @@
 package com.example.duan1_nhom12.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -24,11 +25,50 @@ public class NhaccDao {
         if(cursor.getCount()!=0){
             cursor.moveToFirst();
             do{
-                //String username, String passwork, String ten, String sdt, String diachi
                 list.add( new NhaCungCapModel(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3)));
 
             }while ((cursor.moveToNext()));
         }
         return  list;
     }
+
+    public boolean themnhacc( String ten,String email,String sdt){
+        SQLiteDatabase sqLiteDatabase= dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("tennhacc",ten);
+        contentValues.put("email",email);
+        contentValues.put("sdt",sdt);
+
+        long check = sqLiteDatabase.insert("nhacc",null,contentValues);
+        if(check==-1)
+            return false;
+        return true;
+
+    }
+
+
+    public  boolean capnhapnhacc(int manhacc,String ten,String email,String sdt){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("manhacc",manhacc);
+        contentValues.put("tennhacc",ten);
+        contentValues.put("email",email);
+        contentValues.put("sdt",sdt);
+        long check = sqLiteDatabase.update("nhacc",contentValues,"manhacc=?",new String[]{String.valueOf(manhacc)});
+        if(check==-1)
+            return  false;
+        return true;
+
+
+
+    }
+
+
+    public long delete(String id) {
+        SQLiteDatabase db= dbHelper.getWritableDatabase();
+        return db.delete("nhacc", "mamnhacc = ?", new String[]{String.valueOf(id)});
+    }
+
 }

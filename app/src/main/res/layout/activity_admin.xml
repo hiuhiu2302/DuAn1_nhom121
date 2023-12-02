@@ -18,14 +18,19 @@
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#03A9F4"/>
+            android:background="#E8F44336"/>
 
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            />
+            >
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                class="com.example.duan1_nhom12.fragment.Fragment_home"/>
+        </FrameLayout>
 
     </LinearLayout>
 

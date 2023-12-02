@@ -71,6 +71,49 @@ SanPhamModel sp;
         });
 
 
+        ImageButton imgdt= view.findViewById(R.id.ibtdt);
+        imgdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),fragment_sanphamloai.class);
+                intent.putExtra("loai","dien thoai");
+                startActivity(intent);
+
+            }
+        });
+
+        ImageButton imglaptop= view.findViewById(R.id.ibtlaptop);
+        imglaptop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),fragment_sanphamloai.class);
+                intent.putExtra("loai","laptop");
+                startActivity(intent);
+
+            }
+        });
+
+        ImageButton imgtainghe= view.findViewById(R.id.ibttainghe);
+        imgtainghe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),fragment_sanphamloai.class);
+                intent.putExtra("loai","tainghe");
+                startActivity(intent);
+
+            }
+        });
+
+        ImageButton imggame= view.findViewById(R.id.ibtgame);
+        imggame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),fragment_sanphamloai.class);
+                intent.putExtra("loai","game");
+                startActivity(intent);
+
+            }
+        });
 
 
         return view;
